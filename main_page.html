@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Головна</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G32M9FZKSQ"></script>
+</head>
+    
+<body>
+    <div id="gradient"></div>
+    <div id="pattern"></div>
+
+    <img src="\logo.png" class="logo">
+    <div class="main_div">
+        <div class="text_div">
+            <p>Данный сайт является базой данных дискорд сервера отряд "М.Е.Ф"</p>
+            <p>Ниже вы имеете возможность ознакомится с некоторыми участниками, событиями, ролями и прочей интересной или не очень информацией</p>
+            <p>Без авторизации многая секретная информация может быть недоступна</p>
+            <h1>УЧАСТНИКИ:</h1>
+        </div>
+        <div id="slider">
+            <a href="#" class="control_next">></a>
+            <a href="#" class="control_prev"><</a>
+            <ul>
+              <li>
+                <div>
+                    <h1><a href="users/Hocok/Hocok.html">Носок всевластия</a></h1>
+                    <img class="avatar" src="users/Hocok/avatar.png">
+                    <p>Кирпичи это одомашненные камни...</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <h1><a href="users/Egorchick/Egorchick.html">Egorchick</a></h1>
+                    <img class="avatar" src="users/Egorchick/avatar.png">
+                    <p>Waga baga bobo</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <h1><a href="users/Baton/Baton.html">Адмирал батон</a></h1>
+                    <img class="avatar" src="/users/Baton/avatar.png">
+                    <p>Не берите молоко которое вам предлагает баронесса...</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                    <h1><a href="users/Egor/Egor.html">EGore</a></h1>
+                    <img class="avatar" src="/users/Egor/avatar.png">
+                    <p>С каждым днём мы все дальше от бога.</p>
+                </div>
+              </li>
+            </ul>  
+            
+          </div>
+          <div class="buttons">   
+            <a href="/slang.html"><button type="button">слэнг</button></a>
+            <a href="/histories/histories.html"><button type="button"> истории </button></a>
+            <a href="/FAQ.html"><button type="button">FAQ</button></a>
+            <a href="/questionnaire.html"><button type="button">Анкета</button>  </a>
+          </div>
+    </div>
+</body>
+</html>
+
+<script>
+    ///хекcагоны
+    const patternElement = document.getElementById("pattern");
+
+    const countY = Math.ceil(window.innerHeight / 40) + 1; // Высота окна
+    const countX = Math.ceil(window.innerWidth / 48) + 1; // Ширина окна
+    const gap = 2;
+
+    for (let i = 0; i < countY; i++) {
+        for (let j = 0; j < countX; j++) {
+            const hexagon = document.createElement("div");
+            hexagon.style = `
+                background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODciIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgODcgMTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMi4xOTg3MyAyNi4xNTQ3TDQzLjUgMi4zMDk0TDg0LjgwMTMgMjYuMTU0N1Y3My44NDUzTDQzLjUgOTcuNjkwNkwyLjE5ODczIDczLjg0NTNWMjYuMTU0N1oiIGZpbGw9IiMxMzEyMTciIHN0cm9rZT0iIzEzMTIxNyIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=') no-repeat;
+                width: 44px;
+                height: 50px;
+                background-size: contain;
+                position: absolute;
+                top: ${i * 40}px;
+                left: ${j * 48 + ((i * 24) % 48)}px;
+            `;
+
+            patternElement.appendChild(hexagon);
+        }
+}
+
+
+    let mousePosition = {
+        x: 0,
+        y: 0
+    };
+
+    document.addEventListener("mousemove", (mouse) => {
+        mousePosition = {
+            x: mouse.clientX,
+            y: mouse.clientY
+        };
+    });
+
+    const loop = () => {
+        const gradientElement = document.getElementById("gradient");
+
+        gradientElement.style.transform = `translate(${mousePosition.x}px, ${mousePosition.y}px)`;
+
+        // Request the next animation frame
+        window.requestAnimationFrame(loop);
+    };
+
+    // Start the animation loop
+    window.requestAnimationFrame(loop);
+    ///хексагоны
+
+    ///слайдер
+    jQuery(document).ready(function ($) {
+
+$('#checkbox').change(function(){
+  setInterval(function () {
+      moveRight();
+  }, 3000);
+});
+
+  var slideCount = $('#slider ul li').length;
+  var slideWidth = $('#slider ul li').width();
+  var slideHeight = $('#slider ul li').height();
+  var sliderUlWidth = slideCount * slideWidth;
+  
+  $('#slider').css({ width: slideWidth, height: slideHeight });
+  
+  $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+  
+  $('#slider ul li:last-child').prependTo('#slider ul');
+
+  function moveLeft() {
+      $('#slider ul').animate({
+          left: + slideWidth
+      }, 200, function () {
+          $('#slider ul li:last-child').prependTo('#slider ul');
+          $('#slider ul').css('left', '');
+      });
+  };
+
+  function moveRight() {
+      $('#slider ul').animate({
+          left: - slideWidth
+      }, 200, function () {
+          $('#slider ul li:first-child').appendTo('#slider ul');
+          $('#slider ul').css('left', '');
+      });
+  };
+
+  $('a.control_prev').click(function () {
+      moveLeft();
+  });
+
+  $('a.control_next').click(function () {
+      moveRight();
+  });
+
+});    
+
+///слайдер
+
+</script>
+
+<style>
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+body {
+    background-color: #131217;
+    padding-right: 70px;
+    margin-left: 70px;
+    line-height: 20px;
+    font-family: 'lato', sans-serif;
+    overflow: hidden; /* Чтобы фон выглядел корректно */
+}
+
+#pattern {
+    position: absolute;
+    top: -44px;
+    left: -50px;
+    width: 100vw; /* Занимает всю ширину окна */
+    height: 100vh; /* Занимает всю высоту окна */
+    z-index: -1; /* Находится позади контента */
+}
+
+
+#gradient {
+    background: radial-gradient(red, transparent 50%);
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    transform: translate(200px, 200px);
+    z-index: -1; /* Позади контента */
+}
+
+.main_div{
+        background-color: black; 
+        border: 5px solid red;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: red;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+.logo{
+    margin-top: 25px;
+    margin-left: 40px;
+}
+h1{
+    font-size: 30px;
+    padding: 10px;
+}
+.menu_inner{
+    font-weight: 900;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+a {
+  text-decoration:none;
+  color: red;
+}
+
+#slider {
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  border-radius: 10%;
+}
+
+#slider ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 200px;
+  list-style: none;
+}
+
+#slider ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 350px;
+  height: 400px;
+  background: #131217;
+  text-align: center;
+  line-height: 25px;
+}
+
+a.control_prev, a.control_next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+a.control_prev:hover, a.control_next:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+
+a.control_prev {
+  border-radius: 0 2px 2px 0;
+}
+
+a.control_next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+.slider_option {
+  position: relative;
+  margin: 10px auto;
+  width: 160px;
+  font-size: 18px;
+}
+
+.avatar{
+    background-size: cover;
+    border-radius: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.buttons{
+  margin-top: 30px;
+}
+
+button{
+  border: 5px solid red;
+  margin-right: 20px;
+  color: red;
+  background: rgb(126, 0, 0);
+  background: linear-gradient(0deg, rgb(194, 0, 0) 0%, rgb(67, 5, 5) 100%);
+  border-radius: 10px;
+  font-size: 20px;
+}
+button:hover{
+  background: rgb(255, 0, 0);
+  background: linear-gradient(0deg, rgb(151, 0, 0) 0%, rgb(243, 15, 15) 100%);
+  cursor: pointer;
+}
+
+
+</style>

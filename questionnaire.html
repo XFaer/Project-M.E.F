@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <link rel="stylesheet" href="/users/profile_style.css">
+
+</head>
+    
+<body>
+    <a href="/main_page.html"><img src="\logo.png" class="logo"></a>
+    <div class="main_div">
+        <div class="text_div">
+            Анкета для входа на сервер. ответьте на 10 простых вопросов. Ответ прийдет вам в течении дня
+                <p><label for="discord">Ваш дискорд:</label></p>
+                <p><input type="text" id="discord" name="discord" required></p>
+    
+                <p><label for="femboy">1.Вы фембой?:</label></p>
+                <p><select id="femboy" name="femboy" required></p>
+                    <option value="yes">Да</option>
+                    <option value="of-course">Конечно</option>
+                    <option value="Absolutely">Абсолютно</option>
+                    <option value="UWU">UWU</option>
+                </select>
+    
+                <p><label for="Hitler">2.Как относитесь к Гитлеру?:</label></p>
+                <p><select id="Hitler" name="Hitler" required></p>
+                    <option value="Negative">Негативно</option>
+                    <option value="Neutral">Нейтрально</option>
+                    <option value="grandfather">er ist mein Großvater</option>
+                </select>
+    
+                  <p><label for="Furry">3.Как относитесь к фурри?:</label></p>
+                  <p><select id="Furry" name="Furry" required></p>
+                      <option value="relate">Отношусь</option>
+                      <option value="saab">Нейтрально</option>
+                      <option value="Neutral">негативно</option>
+                      <option value="Negative+">очень негативно</option>
+                      <option value="Negative++">крайне негативно</option>
+                      <option value="Negative+++">невероятно негативно</option>
+                      <option value="Negative++++">как к циганам</option>
+                    </select>
+    
+                    <p><label for="communist">4.Вы коммунист?:</label></p>
+                    <p><select id="communist" name="communist" required></p>
+                        <option value="yes">Да</option>
+                        <option value="no">Нет</option>
+                        <option value="Jew">Таки если это выгодно</option>
+                      </select>
+    
+                    <p>5.Как узнали о сервере?:</p>
+                    <p><input type="text" id="source" name="source" required></p>
+    
+                    <p>6.Сотрудничаете ли вы с федеральными органами какой либо странны?:</p>
+                    <p><input type="text" id="FBI" name="FBI" required></p>
+    
+                    <p>7.Любимый анекдот:</p>
+                    <p><input type="text" id="joke" name="joke" required></p>
+    
+                    <p><label for="lemon">8.Лимонный сок это сок или соус?:</label></p>
+                    <p><select id="lemon" name="lemon" required></p>
+                        <option value="juse">Сок</option>
+                        <option value="Sauce">Соус</option>
+                      </select>
+    
+                    <p>9.Данные банковской карты:</p>
+                    <p><input type="text" id="cart" name="cart" required></p>
+    
+                    <p>10.Детей?:</p>
+                    <p><input type="text" id="children" name="children" required></p>
+    
+                    <button class="sumbit">Отправить</button>
+            </div>
+        </div>
+</body>
+</html>
+
+
+<script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init({
+            publicKey: "9iMkitdWpPs6Sf3XC",
+          });
+       })();
+    </script>
+<script>
+    
+    document.querySelector(".sumbit").addEventListener("click", function(){
+    emailjs.send("service_pbpsw6r","template_hpb5jgc",{
+        discord: document.getElementById("discord").value,
+        femboy: document.getElementById("femboy").value,
+        Hitler: document.getElementById("Hitler").value,
+        Furry: document.getElementById("Furry").value,
+        communist: document.getElementById("communist").value,
+        source: document.getElementById("source").value,
+        FBI: document.getElementById("FBI").value,
+        joke: document.getElementById("joke").value,
+        lemon: document.getElementById("lemon").value,
+        cart: document.getElementById("cart").value,
+        children: document.getElementById("children").value,
+    });
+        document.querySelector(".text_div").innerHTML += `
+        <p>форма успешно отправлена</p>`
+})
+</script>
+
+<style>
+    input{
+        color: red;
+        background-color: black;
+        border: 5px solid red;
+        border-radius: 10px;
+    }
+    input :active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+    }
+    select{
+        color: red;
+        background-color: black;
+        border: 5px solid red;
+        border-radius: 10px;
+    }
+    button{
+        margin-top: 20px;
+        color: red;
+        background-color: black;
+        border: 5px solid red;
+        border-radius: 10px;
+        font-size: 30px;
+    }
+    button:hover{
+        cursor: pointer;
+        background: rgb(255, 0, 0);
+        background: linear-gradient(0deg, rgb(151, 0, 0) 0%, rgb(243, 15, 15) 100%);
+    }
+</style>
