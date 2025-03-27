@@ -185,3 +185,8 @@ h1{
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
+
+
+.quotes, .reputation, .main_text{
+    padding-top: 50px;
+}
